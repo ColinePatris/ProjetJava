@@ -5,20 +5,28 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Cécile
  */
 public class Location {
     
+    Double Longitude;
+    Double Latitude;
     String district;
     String cityBlock;
     String arrestLocation;
 
-    public Location(String district, String cityBlock, String arrestLocation) {
+    public Location(Double Longitude, Double Latitude, String district, String cityBlock, String arrestLocation) {
+        this.Longitude = Longitude;
+        this.Latitude = Latitude;
         this.district = district;
         this.cityBlock = cityBlock;
         this.arrestLocation = arrestLocation;
     }
+
+    
     
 }

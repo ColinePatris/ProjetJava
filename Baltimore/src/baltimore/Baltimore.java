@@ -6,7 +6,7 @@
 package baltimore;
 
 import Model.Arrest;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,7 +14,7 @@ import java.util.LinkedList;
  */
 public class Baltimore {
 
-    LinkedList arrestList = new <Arrest> LinkedList();
+    ArrayList arrestList = new <Arrest> ArrayList();
     
     public static void main(String[] args) {
        
