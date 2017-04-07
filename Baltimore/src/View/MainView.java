@@ -6,14 +6,10 @@
 package View;
 
 import baltimore.ChartCtrl;
+import baltimore.ListCtrl;
 import baltimore.MainCtrl;
 import java.awt.BorderLayout;
-import java.awt.Panel;
-
-import java.awt.Button;
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import javax.swing.JPanel;
 /**
  *
  * @author Coline
@@ -34,15 +30,11 @@ public class MainView extends javax.swing.JDialog {
         
         MainCtrl mainCtrl= new MainCtrl();
         ChartCtrl cc = new ChartCtrl(mainCtrl.getArrestList(),this);
+        ListCtrl lc = new ListCtrl();
         
         /////////////////////////////
         
-
-        javax.swing.JList jason = new javax.swing.JList();
-        ListView List = new ListView(jason);
-        List.setPreferredSize(new Dimension(300, 700));
-
-        this.add(List,BorderLayout.LINE_END);
+        this.add(lc.List,BorderLayout.LINE_END);
 
         DetailsView Details = new DetailsView();
         this.add(Details,BorderLayout.PAGE_END);

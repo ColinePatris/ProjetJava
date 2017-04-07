@@ -5,10 +5,12 @@
  */
 package View;
 
+import Model.ListElement;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 /**
@@ -16,18 +18,20 @@ import javax.swing.JPanel;
  * @author Coline
  */
 public class ListView extends javax.swing.JPanel {
-
-    /**
-     * Creates new form ListView
-     * @param jason
-     */
-    public ListView(javax.swing.JList jason) {
-        initComponents();
+    
+    public javax.swing.JList jason = new <ListElement>javax.swing.JList();
         
+    public ListView() {
+        initComponents();
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
         JPanel filters = new JPanel();
+        filters.setLayout(layout);
+        JComboBox sexfilter = new JComboBox();
+        JComboBox agefilter = new JComboBox();
+        filters.add(sexfilter);
+        filters.add(agefilter);
         filters.setBackground(Color.yellow);
         filters.setPreferredSize(new Dimension(300, 150));
         jason.setPreferredSize(new Dimension(300, 600));

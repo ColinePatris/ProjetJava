@@ -41,7 +41,7 @@ public class Accused {
         stringList = "Accused : \n";
         stringList += "" + age + " years old \n";
         switch (race){
-            //case = W :
+            //case race = W :
         }
         stringList += raceFull + "\n";
         
