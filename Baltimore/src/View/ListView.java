@@ -5,17 +5,36 @@
  */
 package View;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
 /**
  *
- * @author Cécile
+ * @author Coline
  */
 public class ListView extends javax.swing.JPanel {
 
     /**
      * Creates new form ListView
+     * @param jason
      */
-    public ListView() {
+    public ListView(javax.swing.JList jason) {
         initComponents();
+        
+        this.setBorder(BorderFactory.createLineBorder(Color.black));
+        FlowLayout layout = new FlowLayout();
+        this.setLayout(layout);
+        JPanel filters = new JPanel();
+        filters.setBackground(Color.yellow);
+        filters.setPreferredSize(new Dimension(300, 150));
+        jason.setPreferredSize(new Dimension(300, 600));
+        jason.setSize(200, 600);
+        this.add(filters);
+        this.add(jason);
+        
     }
 
     /**

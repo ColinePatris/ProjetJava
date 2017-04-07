@@ -5,6 +5,16 @@
  */
 package View;
 
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Panel;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author Cécile
@@ -16,6 +26,19 @@ public class DetailsView extends javax.swing.JPanel {
      */
     public DetailsView() {
         initComponents();
+
+        setLayout (new BorderLayout());
+        
+        Button next = new Button ("Next");
+        Button back = new Button ("Back");
+        add(next, BorderLayout.LINE_END);
+        add(back, BorderLayout.LINE_START);
+        this.setBorder(BorderFactory.createLineBorder(Color.black));
+        
+        Panel detailsContainer = new Panel();
+        detailsContainer.setPreferredSize(new Dimension(1000, 200));
+        add(detailsContainer, BorderLayout.CENTER);
+        
     }
 
     /**

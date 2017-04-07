@@ -5,10 +5,15 @@
  */
 package View;
 
+import baltimore.ChartCtrl;
+import baltimore.MainCtrl;
 import java.awt.BorderLayout;
 import java.awt.Panel;
 
 import java.awt.Button;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
 /**
  *
  * @author Coline
@@ -19,18 +24,29 @@ public class MainView extends javax.swing.JDialog {
      * Creates new form MainView
      */
     public MainView(java.awt.Frame parent, boolean modal) {
+             
         super(parent, modal);
         initComponents();
         setLayout (new BorderLayout());
         this.setSize(1200,1024);
         this.setTitle("Baltimore Database Manager");
         this.setLocationRelativeTo(null);
-        ChartView Chart = new ChartView();
+        
+        MainCtrl mainCtrl= new MainCtrl();
+        ChartCtrl cc = new ChartCtrl(mainCtrl.getArrestList(),this);
+        
+        /////////////////////////////
+        
+
+        javax.swing.JList jason = new javax.swing.JList();
+        ListView List = new ListView(jason);
+        List.setPreferredSize(new Dimension(300, 700));
+
+        this.add(List,BorderLayout.LINE_END);
+
         DetailsView Details = new DetailsView();
-        ListView List = new ListView();
-        add(Chart, "Center");
-        add(Details, "South");
-        add(List, "East");
+        this.add(Details,BorderLayout.PAGE_END);
+         
     }
 
     /**

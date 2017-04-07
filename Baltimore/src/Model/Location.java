@@ -13,20 +13,51 @@ import java.util.ArrayList;
  */
 public class Location {
     
-    Double Longitude;
-    Double Latitude;
+    Double longitude;
+    Double latitude;
     String district;
     String cityBlock;
     String arrestLocation;
 
-    public Location(Double Longitude, Double Latitude, String district, String cityBlock, String arrestLocation) {
-        this.Longitude = Longitude;
-        this.Latitude = Latitude;
+    public Location(Double longitude, Double latitude, String district, String cityBlock, String arrestLocation) {
+        this.longitude = longitude;
+        this.latitude = latitude;
         this.district = district;
         this.cityBlock = cityBlock;
         this.arrestLocation = arrestLocation;
     }
 
+    public Location(String district, String cityBlock, String arrestLocation) {
+        this.district = district;
+        this.cityBlock = cityBlock;
+        this.arrestLocation = arrestLocation;
+    }
     
+    
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public String getCityBlock() {
+        return cityBlock;
+    }
+
+    public String getArrestLocation() {
+        return arrestLocation;
+    }
+
+    public String toString(){
+        String stringList = new String();
+        return stringList;
+    }
     
 }

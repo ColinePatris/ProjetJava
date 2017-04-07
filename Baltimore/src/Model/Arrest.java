@@ -16,16 +16,49 @@ public class Arrest {
     
     Accused accused;
     Location location;
-    Date date;
-    Time time;
+    String date;
+    String time;
     String charge;
 
-    public Arrest(Accused accused, Location location, Date date, Time time, String charge) {
+    public Arrest() {
+    }
+    
+    public Arrest(Accused accused, Location location, String  date, String  time, String charge) {
         this.accused = accused;
         this.location = location;
         this.date = date;
         this.time = time;
         this.charge = charge;
+    }
+
+    public Accused getAccused() {
+        return accused;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public String  getDate() {
+        return date;
+    }
+
+    public String  getTime() {
+        return time;
+    }
+
+    public String getCharge() {
+        return charge;
+    }
+    
+    public String toString(){
+        String stringList = new String();
+        stringList = accused.toString() + "\n";
+        stringList += location.toString() + "\n";
+        stringList += date + "\n";
+        stringList += time + "\n";
+        stringList += charge + "\n";
+        return stringList;
     }
     
 }

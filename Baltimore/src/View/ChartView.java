@@ -5,6 +5,22 @@
  */
 package View;
 
+import baltimore.ChartCtrl;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.jfree.ui.RefineryUtilities;
+
 /**
  *
  * @author Cécile
@@ -14,9 +30,96 @@ public class ChartView extends javax.swing.JPanel {
     /**
      * Creates new form ChartView
      */
-    public ChartView() {
-        initComponents();
+
+    static PieDataset pieDataset;
+    static CategoryDataset barDataset;
+    static CategoryDataset horizontalBarDataset;
+    
+    public ChartView(PieDataset pieDataset, CategoryDataset barDataset, CategoryDataset horizontalBarDataset) {
+         initComponents();
+        this.pieDataset = pieDataset;
+        this.barDataset = barDataset;
+        this.horizontalBarDataset = horizontalBarDataset;
+        setLayout (new BorderLayout());
+        this.setSize(800,600);
+        this.setBorder(BorderFactory.createLineBorder(Color.black));  
+
+        JPanel upChartContainer = new JPanel();
+        upChartContainer.setLayout (new BorderLayout());
+        
+        this.add(upChartContainer,BorderLayout.PAGE_START);
+        
+        JPanel test = createPiePanel();
+        upChartContainer.add(test, BorderLayout.LINE_START);
+        test.setPreferredSize(new Dimension(350, 400));
+        test.setVisible(true);
+        
+        JPanel test2 = createBarPanel();
+        upChartContainer.add(test2, BorderLayout.LINE_END);
+        test2.setPreferredSize(new Dimension(540, 400));
+        test2.setVisible(true);
+        
+        JPanel test3 = createHorizontalBarPanel();
+        upChartContainer.add(test3, BorderLayout.PAGE_END);
+        test3.setPreferredSize(new Dimension(540, 400));
+        test3.setVisible(true);
+        
     }
+   
+     private static JFreeChart createPieChart( PieDataset dataset )
+   {
+      JFreeChart pieChart = ChartFactory.createPieChart(      
+         "Gender repartition",  // chart title 
+         dataset,        // data    
+         true,           // include legend   
+         true, 
+         false);
+
+      return pieChart;
+   }
+     
+     private static JFreeChart createBarChart( CategoryDataset dataset )
+   {
+      JFreeChart barChart = ChartFactory.createBarChart(      
+         "Age repartition",  // chart title 
+         "Age",            
+         "Accused",            
+         dataset,          
+         PlotOrientation.VERTICAL,           
+         true, true, false);
+
+      return barChart;
+   }
+     
+      private static JFreeChart createHorizontalBarChart( CategoryDataset dataset )
+   {
+      JFreeChart barChart = ChartFactory.createBarChart(      
+         "Race repartition",  // chart title 
+         "Accused",            
+         "Race",            
+         dataset,          
+         PlotOrientation.HORIZONTAL,           
+         true, true, false);
+
+      return barChart;
+   }
+
+    public static JPanel createPiePanel( )
+   {
+      JFreeChart pieChart = createPieChart(pieDataset);
+      return new ChartPanel( pieChart ); 
+   }
+     public static JPanel createBarPanel( )
+   {
+      JFreeChart barChart = createBarChart(barDataset);
+      return new ChartPanel( barChart ); 
+   }
+     public static JPanel createHorizontalBarPanel( )
+   {
+      JFreeChart barChart = createBarChart(horizontalBarDataset);
+      return new ChartPanel( barChart ); 
+   }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,61 +130,19 @@ public class ChartView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setToolTipText("");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
-        );
-
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 349, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 238, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addGap(0, 369, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 462, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

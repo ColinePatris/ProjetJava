@@ -11,12 +11,41 @@ package Model;
  */
 public class Accused {
     int age;
-    char sex;
-    char race; 
+    String sex;
+    String race; 
+
+    public Accused() {
+    }   
     
-    public Accused(int age, char sex, char race){
+    public Accused(int age, String sex, String race){
         this.age = age;
         this.sex=sex;
         this.race=race;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getRace() {
+        return race;
+    }
+    
+    public String toString(){
+        String stringList = new String();
+        String raceFull = new String();
+        stringList = "Accused : \n";
+        stringList += "" + age + " years old \n";
+        switch (race){
+            //case = W :
+        }
+        stringList += raceFull + "\n";
+        
+        return stringList;
+    }
+    
 }

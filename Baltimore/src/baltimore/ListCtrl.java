@@ -5,10 +5,18 @@
  */
 package baltimore;
 
+import Model.Arrest;
+import java.util.ArrayList;
+
 /**
  *
  * @author Cécile
  */
 public class ListCtrl {
-    
+    ArrayList arrestList = new <Arrest> ArrayList();
+
+    public ListCtrl(ArrayList arrestList) {
+        this.arrestList = arrestList;
+    }
+
 }
