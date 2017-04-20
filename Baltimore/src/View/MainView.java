@@ -5,11 +5,10 @@
  */
 package View;
 
-import baltimore.ChartCtrl;
 import baltimore.ListCtrl;
 import baltimore.MainCtrl;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+
 /**
  *
  * @author Coline
@@ -19,9 +18,8 @@ public class MainView extends javax.swing.JDialog {
     /**
      * Creates new form MainView
      */
-    public MainView(java.awt.Frame parent, boolean modal) {
-             
-        super(parent, modal);
+    public MainView() {
+
         initComponents();
         setLayout (new BorderLayout());
         this.setSize(1200,1024);
@@ -29,17 +27,17 @@ public class MainView extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         
         MainCtrl mainCtrl= new MainCtrl();
-        ChartCtrl cc = new ChartCtrl(mainCtrl.getArrestList(),this);
+        //ChartCtrl cc = new ChartCtrl(mainCtrl.getArrestList(),this);
         ListCtrl lc = new ListCtrl();
         
-        /////////////////////////////
+        javax.swing.JList jason = new javax.swing.JList();
+        //ListView List = new ListView(jason);
+        //List.setPreferredSize(new Dimension(300, 700));
         
         this.add(lc.List,BorderLayout.LINE_END);
-
-        DetailsView Details = new DetailsView();
-        this.add(Details,BorderLayout.PAGE_END);
-         
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,51 +63,7 @@ public class MainView extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                MainView dialog = new MainView(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
     
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

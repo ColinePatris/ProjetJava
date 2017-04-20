@@ -3,17 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/Model/Arrest.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/baltimore/ChartCtrl.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/View/MainView.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/View/ChartView.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/View/DetailsView.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/View/ListView.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/baltimore/DetailsCtrl.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/Model/Location.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/baltimore/ListCtrl.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/baltimore/Baltimore.java</file>
-            <file>file:/C:/Users/Cécile/Documents/EPF/4A/Projet%20Java/Baltimore/Baltimore/src/Model/Accused.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/Model/Accused.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/baltimore/ListCtrl.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/View/ListView.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/View/ChartView.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/View/MainView.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/baltimore/DetailsCtrl.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/baltimore/MainCtrl.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/baltimore/ChartCtrl.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/Model/ListElement.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/Model/Arrest.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/Model/Location.java</file>
         </group>
     </open-files>
 </project-private>

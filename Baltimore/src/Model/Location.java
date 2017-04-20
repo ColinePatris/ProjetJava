@@ -56,7 +56,11 @@ public class Location {
     }
 
     public String toString(){
-        String stringList = new String();
+        String stringList = district + "\n";
+        stringList += cityBlock + "\n";
+        stringList += arrestLocation + "\n";
+        stringList += latitude.toString() + "\n";
+        stringList += longitude.toString() + "\n";
         return stringList;
     }
     

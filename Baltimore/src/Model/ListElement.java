@@ -8,6 +8,7 @@ package Model;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.crypto.Cipher; //librairie native pour cryptage des données
 
 /**
  *

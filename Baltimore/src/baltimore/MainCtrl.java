@@ -8,6 +8,8 @@ package baltimore;
 import Model.Accused;
 import Model.Arrest;
 import Model.Location;
+import View.MainView;
+import java.awt.BorderLayout;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,22 +27,29 @@ import org.json.simple.parser.ParseException;
 public class MainCtrl {
     
     static ArrayList arrestList = new <Arrest> ArrayList();
+    static Accused accused;
+    static Location loc;
+    static Arrest arrest;
+    static JSONParser parser = new JSONParser();
+    static MainView mView;
+    static ChartCtrl chartCtrl;
 
-    Accused accused;
-    Location loc;
-    Arrest arrest;
-    JSONParser parser = new JSONParser();
-
-    public MainCtrl() {
-        parseJSON();
+    public static void main(String[] args) {
+        parseJSON();        
+        mView = new MainView();
+        
+        chartCtrl = new ChartCtrl(arrestList);
+        mView.add(chartCtrl.Chart,BorderLayout.CENTER);
+        
+        DetailsCtrl detailsCtrl = new DetailsCtrl();
+        mView.add(detailsCtrl.Details,BorderLayout.PAGE_END);
+        
+        mView.setVisible(true);
     }
 
-    public void parseJSON(){
-        
-        int test =0;
-        
-         try {
+    public static void parseJSON(){
 
+         try {
             Object obj = parser.parse(new FileReader("data.json"));
 
             JSONArray jsonArray = (JSONArray) obj;
@@ -48,9 +57,6 @@ public class MainCtrl {
 
             Iterator <JSONObject> iterator = jsonArray.iterator();
             while (iterator.hasNext()) {
-                
-                test++;
-                
                 JSONObject it = (JSONObject) iterator.next();
 //                System.out.println((String) it.get("arrest"));
                 
@@ -89,10 +95,8 @@ public class MainCtrl {
                 
                 arrest = new Arrest(accused, loc, date, time, charge);
                 arrestList.add(arrest);
-                
             }
 
-            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -100,7 +104,6 @@ public class MainCtrl {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        
     }
     
     public ArrayList getArrestList(){

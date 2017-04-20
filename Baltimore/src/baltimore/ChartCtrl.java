@@ -24,10 +24,11 @@ public class ChartCtrl {
     static ArrayList arrestList = new <Arrest> ArrayList();
     ChartView Chart;
 
-    public ChartCtrl(ArrayList arrestList, MainView main) {
+    public ChartCtrl(ArrayList arrestList) {
         this.arrestList = arrestList;
-        ChartView Chart = new ChartView(createPieDataset(), createBarDataset(), createHorizontalBarDataset());
-        main.add(Chart,BorderLayout.CENTER);
+        Chart = new ChartView(createPieDataset(), createBarDataset(), createHorizontalBarDataset());
+        Chart.setVisible(true);
+//        mView.add(Chart,BorderLayout.CENTER);
     }
      
      private static PieDataset createPieDataset(){
@@ -147,21 +148,20 @@ public class ChartCtrl {
             raceArray[j]++;
 
        }
-       
       
-      final String female = "Race";                       
+      final String acc = "Accused";                       
       final String first = "Asian";        
-      final String second = "Blacks";        
-      final String third = "Whites";        
-      final String fourth = "Indians";
-      final String above = "Whites";   
+      final String second = "Black";        
+      final String third = "White";        
+      final String fourth = "Indian";
+      final String last = "Unknown";   
       final DefaultCategoryDataset dataset = new DefaultCategoryDataset( );  
 
-      dataset.addValue( raceArray[0] , female , first );        
-      dataset.addValue( raceArray[1]  , female , second );        
-      dataset.addValue( raceArray[2]  , female , third ); 
-      dataset.addValue( raceArray[3]  , female , fourth );  
-      dataset.addValue( raceArray[4] , female , above ); 
+      dataset.addValue( raceArray[0] , acc , first );        
+      dataset.addValue( raceArray[1]  , acc , second );        
+      dataset.addValue( raceArray[2]  , acc , third ); 
+      dataset.addValue( raceArray[3]  , acc , fourth );  
+      dataset.addValue( raceArray[4] , acc, last ); 
 
       return dataset; 
    }
@@ -169,7 +169,4 @@ public class ChartCtrl {
     public ChartView getChart() {
         return Chart;
     }
-  
-   
-     
 }

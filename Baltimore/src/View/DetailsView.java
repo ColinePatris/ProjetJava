@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.Arrest;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -12,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Panel;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
@@ -24,21 +26,46 @@ public class DetailsView extends javax.swing.JPanel {
     /**
      * Creates new form DetailsView
      */
+    JPanel imgContainer = new JPanel();
+    JPanel centerDetails = new JPanel();
+    JPanel rightDetails = new JPanel();
+    
+    Arrest arrest = new Arrest();
+    
     public DetailsView() {
         initComponents();
 
         setLayout (new BorderLayout());
         
-        Button next = new Button ("Next");
-        Button back = new Button ("Back");
+        Button next = new Button ("Next >>");
+        Button back = new Button ("<< Back");
         add(next, BorderLayout.LINE_END);
         add(back, BorderLayout.LINE_START);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         
-        Panel detailsContainer = new Panel();
+        JPanel detailsContainer = new JPanel();
         detailsContainer.setPreferredSize(new Dimension(1000, 200));
         add(detailsContainer, BorderLayout.CENTER);
         
+        imgContainer.setPreferredSize(new Dimension(200, 190));
+        imgContainer.setBorder(BorderFactory.createLineBorder(Color.black));
+        detailsContainer.add(imgContainer, BorderLayout.LINE_START);
+          
+        centerDetails.setPreferredSize(new Dimension(400, 190));
+        centerDetails.setBorder(BorderFactory.createLineBorder(Color.black));
+        detailsContainer.add(centerDetails, BorderLayout.CENTER);
+        
+        rightDetails.setPreferredSize(new Dimension(400, 190));
+        rightDetails.setBorder(BorderFactory.createLineBorder(Color.black));
+        detailsContainer.add(rightDetails, BorderLayout.LINE_END);
+        
+        setInfo();
+    }
+    
+    public void setInfo(){
+        JLabel nom = new JLabel();
+        nom.setText("Nom :");
+        centerDetails.add(nom);
     }
 
     /**

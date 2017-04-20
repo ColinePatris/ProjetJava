@@ -6,6 +6,9 @@
 package baltimore;
 
 import Model.Arrest;
+import View.DetailsView;
+import View.MainView;
+import java.awt.BorderLayout;
 
 /**
  *
@@ -14,4 +17,11 @@ import Model.Arrest;
 public class DetailsCtrl {
     String image;
     Arrest arrest;
+    DetailsView Details;
+
+    public DetailsCtrl() {
+        
+        Details = new DetailsView();
+    
+    }
 }
