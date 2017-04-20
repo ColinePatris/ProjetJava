@@ -12,6 +12,7 @@ import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -22,11 +23,13 @@ public class ListView extends javax.swing.JPanel {
     public javax.swing.JList jason = new <ListElement>javax.swing.JList();
         
     public ListView() {
-        initComponents();
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
         JPanel filters = new JPanel();
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setViewportView(jason);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         filters.setLayout(layout);
         JComboBox sexfilter = new JComboBox();
         JComboBox agefilter = new JComboBox();
@@ -34,11 +37,9 @@ public class ListView extends javax.swing.JPanel {
         filters.add(agefilter);
         filters.setBackground(Color.yellow);
         filters.setPreferredSize(new Dimension(300, 150));
-        jason.setPreferredSize(new Dimension(300, 600));
-        jason.setSize(200, 600);
+        scrollPane.setPreferredSize(new Dimension(290, 600));
         this.add(filters);
-        this.add(jason);
-        
+        this.add(scrollPane);
     }
 
     /**

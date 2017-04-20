@@ -44,6 +44,9 @@ public class MainCtrl {
         DetailsCtrl detailsCtrl = new DetailsCtrl();
         mView.add(detailsCtrl.Details,BorderLayout.PAGE_END);
         
+        ListCtrl listCtrl = new ListCtrl();
+        mView.add(listCtrl.List,BorderLayout.LINE_END);
+        
         mView.setVisible(true);
     }
 

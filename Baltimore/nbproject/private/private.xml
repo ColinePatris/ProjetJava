@@ -5,14 +5,15 @@
         <group>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/Model/Accused.java</file>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/baltimore/ListCtrl.java</file>
-            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/View/ListView.java</file>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/View/ChartView.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/View/ListView.java</file>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/View/MainView.java</file>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/baltimore/DetailsCtrl.java</file>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/baltimore/MainCtrl.java</file>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/baltimore/ChartCtrl.java</file>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/Model/ListElement.java</file>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/Model/Arrest.java</file>
+            <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/View/MyCellRenderer.java</file>
             <file>file:/C:/Users/Coline/Documents/4A/Java/ProjetJava/Baltimore/src/Model/Location.java</file>
         </group>
     </open-files>

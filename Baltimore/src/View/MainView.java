@@ -25,16 +25,6 @@ public class MainView extends javax.swing.JDialog {
         this.setSize(1200,1024);
         this.setTitle("Baltimore Database Manager");
         this.setLocationRelativeTo(null);
-        
-        MainCtrl mainCtrl= new MainCtrl();
-        //ChartCtrl cc = new ChartCtrl(mainCtrl.getArrestList(),this);
-        ListCtrl lc = new ListCtrl();
-        
-        javax.swing.JList jason = new javax.swing.JList();
-        //ListView List = new ListView(jason);
-        //List.setPreferredSize(new Dimension(300, 700));
-        
-        this.add(lc.List,BorderLayout.LINE_END);
     }
 
 
