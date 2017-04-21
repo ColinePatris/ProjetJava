@@ -1,17 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import Model.Accused;
 import Model.Arrest;
 import Model.ListElement;
 import Model.Location;
-import View.ListView;
 import View.MainView;
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,16 +14,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-/**
- *
- * @author Cécile
- */
 public class MainCtrl {
     
     static ArrayList arrestList = new <Arrest> ArrayList();
@@ -55,28 +45,32 @@ public class MainCtrl {
         mView.add(detailsCtrl.getDetails(),BorderLayout.PAGE_END);
         
         JList jason = listCtrl.getList().getJason();
+        Button next = detailsCtrl.getDetails().getNext();
+        Button previous = detailsCtrl.getDetails().getPrevious();
         
-        jason.addListSelectionListener(new ListSelectionListener() {
-
-        @Override
-        public void valueChanged(ListSelectionEvent arg0) {
-                if (!arg0.getValueIsAdjusting()) {
-                  
-                    if(jason.getSelectedValue() != null){
-                  ListElement listEl = (ListElement) jason.getSelectedValue();
-                  Arrest selectedArrest = listEl.getArrest();
-
-                  detailsCtrl.getDetails().setInfo(selectedArrest);
-                    }
+        jason.addListSelectionListener((ListSelectionEvent arg0) -> {
+            if (!arg0.getValueIsAdjusting()) {
+                
+                if(jason.getSelectedValue() != null){
+                    ListElement listEl = (ListElement) jason.getSelectedValue();
+                    Arrest selectedArrest = listEl.getArrest();
+                    
+                    detailsCtrl.getDetails().setInfo(selectedArrest);
                 }
             }
         });
         
-
+        next.addActionListener((java.awt.event.ActionEvent evt) -> {
+            listCtrl.getList().getJason().setSelectedIndex(listCtrl.getList().getJason().getSelectedIndex()+1);
+        });
+        
+        previous.addActionListener((java.awt.event.ActionEvent evt) -> {
+            listCtrl.getList().getJason().setSelectedIndex(listCtrl.getList().getJason().getSelectedIndex()-1);
+        });
         
         mView.setVisible(true);
     }
-
+    
     public static void parseJSON(){
 
          try {
@@ -84,14 +78,12 @@ public class MainCtrl {
             Object obj = parser.parse(new FileReader("data.json"));
 
             JSONArray jsonArray = (JSONArray) obj;
-//            System.out.println(jsonArray);
 
             Iterator <JSONObject> iterator = jsonArray.iterator();
             while (iterator.hasNext()) {
                 
                 
                 JSONObject it = (JSONObject) iterator.next();
-//                System.out.println((String) it.get("arrest"));
                 
                 //Accused
                 int age = (int) Integer.parseInt((String) it.get("age"));
@@ -100,7 +92,6 @@ public class MainCtrl {
                 
                 accused = new Accused(age, sex, race);
 
-//              System.out.println(accused.getAge());
                 
                 //Location
                 JSONObject location = (JSONObject) it.get("location_1");
@@ -110,37 +101,27 @@ public class MainCtrl {
                     
                     String district = (String) it.get("district");
                     String arrestLocation = (String) it.get("arrestlocation");
-                    String cityBlock = (String) it.get("incident1");// Est-ce que c'est bien incident1 ?
+                    String cityBlock = (String) it.get("incident1");
                 
                     loc = new Location(longitude, latitude, district, cityBlock, arrestLocation);
                 }else{
                     String district = (String) it.get("district");
                     String arrestLocation = (String) it.get("arrestlocation");
-                    String cityBlock = (String) it.get("incident1");// Est-ce que c'est bien incident1 ?
+                    String cityBlock = (String) it.get("incident1");
 
                     loc = new Location(district, cityBlock, arrestLocation);
                 }
 
                 //Arrest  
-                String date = (String) it.get("arrestdate");// Changer en String pour simplifier
+                String date = (String) it.get("arrestdate");
                 String time = (String) it.get("arresttime");
                 String charge = (String) it.get("chargedescription");
                 
                 arrest = new Arrest(accused, loc, date, time, charge);
-                arrestList.add(arrest);
-                
+                arrestList.add(arrest);                
             }
-
-            
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } catch (IOException | ParseException e) {
         }
-
     }
-  
-    
 }

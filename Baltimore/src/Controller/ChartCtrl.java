@@ -1,25 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import Model.Accused;
 import Model.Arrest;
 import View.ChartView;
-import View.MainView;
-import java.awt.BorderLayout;
 import java.util.ArrayList;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
-/**
- *
- * @author Cécile
- */
 public class ChartCtrl {
     static ArrayList arrestList = new <Arrest> ArrayList();
     private ChartView Chart;
@@ -28,9 +17,7 @@ public class ChartCtrl {
         this.arrestList = arrestList;
 
         Chart = new ChartView(createPieDataset(), createBarDataset(), createHorizontalBarDataset());
-        Chart.setVisible(true);
-//        mView.add(Chart,BorderLayout.CENTER);
-        
+        Chart.setVisible(true);        
     }
      
      private static PieDataset createPieDataset(){
@@ -169,5 +156,4 @@ public class ChartCtrl {
     public ChartView getChart() {
         return Chart;
     }
-     
 }

@@ -8,7 +8,6 @@ package Model;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -20,7 +19,7 @@ import javax.swing.JPanel;
  */
 public class ListElement extends JPanel {
     FlowLayout layout = new FlowLayout();
-    BoxLayout boxLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
+    BoxLayout boxLayout;
     
     JLabel sex = new JLabel();
     JLabel age = new JLabel();
@@ -33,6 +32,7 @@ public class ListElement extends JPanel {
     Arrest arrest;
     
     public ListElement(Arrest arrest){
+        boxLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         this.setPreferredSize(new Dimension(280, 65));
         

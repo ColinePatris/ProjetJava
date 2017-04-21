@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import java.awt.Component;
@@ -13,10 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 
-/**
- *
- * @author Coline
- */
 public class MyCellRenderer extends JLabel implements ListCellRenderer<Object> {
 
     @Override

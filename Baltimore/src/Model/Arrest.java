@@ -1,17 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-import java.sql.Time;
-import java.util.Date;
-
-/**
- *
- * @author Cécile
- */
 public class Arrest {
     
     private Accused accused;
@@ -51,8 +39,9 @@ public class Arrest {
         return charge;
     }
     
+    @Override
     public String toString(){
-        String stringList = new String();
+        String stringList;
         stringList = accused.toString() + "\n";
         stringList += location.toString() + "\n";
         stringList += date + "\n";
@@ -60,5 +49,4 @@ public class Arrest {
         stringList += charge + "\n";
         return stringList;
     }
-    
 }

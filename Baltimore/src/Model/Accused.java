@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
- * @author Cécile
- */
 public class Accused {
     private int age;
     private String sex;
@@ -35,8 +26,9 @@ public class Accused {
         return race;
     }
     
+    @Override
     public String toString(){
-        String stringList = new String();
+        String stringList;
         String raceFull = new String();
         stringList = "Accused : \n";
         stringList += "" + age + " years old \n";

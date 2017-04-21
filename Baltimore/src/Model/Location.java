@@ -1,16 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-import java.util.ArrayList;
-
-/**
- *
- * @author Cécile
- */
 public class Location {
     
     private Double longitude;
@@ -57,10 +46,4 @@ public class Location {
     public String getArrestLocation() {
         return arrestLocation;
     }
-
-    public String toString(){
-        String stringList = new String();
-        return stringList;
-    }
-    
 }
