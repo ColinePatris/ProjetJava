@@ -21,7 +21,7 @@ public class ListView extends javax.swing.JPanel {
         scrollPane.setViewportView(jason);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        scrollPane.setPreferredSize(new Dimension(290, 625));
+        scrollPane.setPreferredSize(new Dimension(290, 550));
 
         this.add(scrollPane);
     }

@@ -12,8 +12,9 @@ public class MainView extends javax.swing.JFrame {
     public MainView() {
         setLayout (new BorderLayout());
         this.setTitle("Baltimore Database Manager");
-        this.setLocationRelativeTo(null);
+//        this.setLocationRelativeTo(null);
         this.setSize(1200,1000);
+        
         rightBox =  Box.createVerticalBox();
         rightBox.setBorder(BorderFactory.createLineBorder(Color.black));
 //        FlowLayout layout = new FlowLayout();

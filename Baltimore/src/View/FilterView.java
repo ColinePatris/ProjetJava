@@ -23,12 +23,15 @@ public class FilterView extends javax.swing.JPanel {
     String[] sexChoices = { "All", "Male", "Female" };
     String[] ageChoices = { "All", "15-25", "26-35","36-50", "51-65","65+"};
     String[] raceChoices = { "All", "Asian", "White","Black", "Indian", "Unknown"};
+    String[] districtChoices = { "All", "Central", "Eastern","Northeastern", "Northern", "Northwestern", "Southeastern", "Southern", "Southwestern", "Western"};
     
     JComboBox sexfilter;
     JComboBox agefilter;
     JComboBox racefilter;
+    JComboBox districtfilter;
     
     JButton filterButton;
+    JButton chartButton;
     
     public FilterView() {
         initComponents();
@@ -71,12 +74,38 @@ public class FilterView extends javax.swing.JPanel {
         filterButton.setText("Ok");
         
         box.add(filterButton);
+
+        JLabel titleChart = new JLabel();
+        titleChart.setText("CHART FILTER");
+        titleChart.setFont(new Font("", Font.BOLD, 18));
+        box.add(titleChart);
+   
+        Box boxDistrict =  Box.createHorizontalBox();
+        
+        JLabel districtTitle = new JLabel();
+        districtTitle.setText(" District: ");
+        boxDistrict.add(districtTitle);
+        districtfilter = new JComboBox(districtChoices);
+        boxDistrict.add(districtfilter);
+        
+        box.add(boxDistrict);
+        
+        chartButton = new JButton();
+        chartButton.setText("Ok");
+        
+        box.add(chartButton);
         
         this.setBackground(Color.white);
-        this.setPreferredSize(new Dimension(300, 150));
-        
-        System.out.print(sexfilter.getSelectedItem());
-        
+        this.setPreferredSize(new Dimension(300, 200));
+                
+    }
+
+    public JComboBox getDistrictfilter() {
+        return districtfilter;
+    }
+
+    public JButton getChartButton() {
+        return chartButton;
     }
 
     public JButton getFilterButton() {

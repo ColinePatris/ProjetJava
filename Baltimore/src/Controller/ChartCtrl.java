@@ -10,18 +10,23 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
 public class ChartCtrl {
-    static ArrayList arrestList = new <Arrest> ArrayList();
-    private ChartView Chart;
+    public ChartView Chart;
 
     public ChartCtrl(ArrayList arrestList) {
-        this.arrestList = arrestList;
-
-        Chart = new ChartView(createPieDataset(), createBarDataset(), createHorizontalBarDataset());
+        Chart = new ChartView(createPieDataset(arrestList), createBarDataset(arrestList), createHorizontalBarDataset(arrestList));
         Chart.setVisible(true);        
     }
-     
-     private static PieDataset createPieDataset(){
-         
+    
+    public void setFilter(ArrayList CarrestList){
+        Chart.setView(createPieDataset(CarrestList), createBarDataset(CarrestList), createHorizontalBarDataset(CarrestList));
+    }
+    
+    public void setChart(ArrayList arrestList){
+        Chart = new ChartView(createPieDataset(arrestList), createBarDataset(arrestList), createHorizontalBarDataset(arrestList));
+        Chart.setVisible(true);
+    }
+    
+     public PieDataset createPieDataset(ArrayList arrestList){
        int women = 0, men = 0;
        String sex;
        Arrest arrest = new Arrest();
@@ -30,6 +35,8 @@ public class ChartCtrl {
        for(int i=0; i < arrestList.size(); i++){
             arrest = (Arrest) arrestList.get(i);
             accused = arrest.getAccused();
+            arrest = (Arrest) arrestList.get(i);
+            System.out.print(arrest.getLocation().getDistrict());
             sex = accused.getSex();
           
             if(sex.equals("M")){
@@ -45,7 +52,7 @@ public class ChartCtrl {
        return dataset;   
      }
      
-      private CategoryDataset createBarDataset( )
+      public CategoryDataset createBarDataset(ArrayList arrestList)
    {
        int menAge[] = new int[5];
        int womenAge[] = new int[5];
@@ -107,7 +114,7 @@ public class ChartCtrl {
       return dataset; 
    }
 
-      private CategoryDataset createHorizontalBarDataset( )
+      public CategoryDataset createHorizontalBarDataset(ArrayList arrestList)
    {
        int raceArray[] = new int[5];
        int j = 0;

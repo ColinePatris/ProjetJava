@@ -11,11 +11,8 @@ public class ListCtrl{
     private ListView List = new ListView();
     private ListElement[] elementsList;
     
-    private ArrayList arrestList;
-
     public ListCtrl(ArrayList arrestList) {
         
-        this.arrestList = arrestList;
         this.elementsList = new ListElement[arrestList.size()];
          for(int i=0; i < arrestList.size(); i++){
              elementsList[i] = new ListElement((Arrest) arrestList.get(i));

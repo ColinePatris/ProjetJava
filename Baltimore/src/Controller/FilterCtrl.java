@@ -12,22 +12,50 @@ import java.util.function.Predicate;
  * @author Cécile
  */
 public class FilterCtrl {
-    ArrayList arrestList;
+  //  ArrayList arrestList;
     static ArrayList LarrestList;
+    ArrayList CarrestList;
     FilterView filter ;
     Arrest arrest;
     Accused accused;
     Location location;
     
-    public FilterCtrl(ArrayList arrestList) {
-        this.arrestList = arrestList;
+    public FilterCtrl() {
+        //this.arrestList = arrestList;
         filter = new FilterView();
     }
     
-    public ArrayList filter(String sex, String age, String race){
+    public ArrayList chartFilter(String district, ArrayList arrestList){
+        
+        this.CarrestList = new ArrayList();
+        
+        for(int i = 0; i < arrestList.size() ; i++){
+            CarrestList.add(arrestList.get(i));
+        }
+        
+        if("All".equals(district)){
+            return CarrestList;
+        }else{
+        for(int i = 0; i< CarrestList.size(); i++){
+                arrest = (Arrest) CarrestList.get(i);
+                location = arrest.getLocation();
+                
+                if( location.getDistrict().equals(district) == false){
+                    CarrestList.remove(i);
+                    i = i-1;
+                }
+            }
+        return CarrestList;
+        }
+    }
+    
+    public ArrayList filter(String sex, String age, String race, ArrayList arrestList){
         
         this.LarrestList = new ArrayList();
-        this.LarrestList = arrestList;
+        
+        for(int i = 0; i < arrestList.size() ; i++){
+            LarrestList.add(arrestList.get(i));
+        }
         
         filterAge(age);
         filterSex(sex);
@@ -39,8 +67,6 @@ public class FilterCtrl {
     public void filterAge(String selection){
         int down;
         int up;
-        
-        System.out.print(selection);
         
         switch (selection) {
             case "15-25":
@@ -68,24 +94,16 @@ public class FilterCtrl {
                 up = 100;
                 break;
         }
-        
-//        System.out.print(down);
-//        System.out.print(up);
-//        
+
         for(int i = 0; i< LarrestList.size(); i++){
                 arrest = (Arrest) LarrestList.get(i);
                 accused = arrest.getAccused();
-//                System.out.println((accused.getAge() > down && accused.getAge() < up));
-                if((accused.getAge() >= down && accused.getAge() < up) == false){
-//                    System.out.println(down + "**" + up + "->" + accused.getAge() + " _ ");
 
+                if((accused.getAge() >= down && accused.getAge() < up) == false){
                     LarrestList.remove(i);
                     i = i-1;
                 }
         }
-        
-//        System.out.println(LarrestList);
-        
     }
     
     public void filterSex(String selection){

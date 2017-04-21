@@ -1,8 +1,10 @@
 package View;
 
+import Controller.ChartCtrl;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
@@ -32,16 +34,52 @@ public class ChartView extends javax.swing.JPanel {
     }
         
     public ChartView(PieDataset pieDataset, CategoryDataset barDataset, CategoryDataset horizontalBarDataset) {
-         initComponents();
-        this.pieDataset = pieDataset;
-        this.barDataset = barDataset;
-        this.horizontalBarDataset = horizontalBarDataset;
+//        initComponents();
+        
         setLayout (new BorderLayout());
         this.setSize(800,600);
         this.setBorder(BorderFactory.createLineBorder(Color.black));  
         this.setVisible(true);
+        
+        setView(pieDataset,barDataset,horizontalBarDataset);
+        
+//
+//        this.pieDataset = pieDataset;
+//        this.barDataset = barDataset;
+//        this.horizontalBarDataset = horizontalBarDataset;
+//
+//        JPanel ChartContainer = new JPanel();
+//        ChartContainer.setLayout (new BorderLayout());
+//        
+//        this.add(ChartContainer,BorderLayout.PAGE_START);
+//        
+//        JPanel test = createPiePanel();
+//        ChartContainer.add(test, BorderLayout.LINE_START);
+//        test.setPreferredSize(new Dimension(350, 400));
+//        test.setVisible(true);
+//        
+//        JPanel test2 = createBarPanel();
+//        ChartContainer.add(test2, BorderLayout.LINE_END);
+//        test2.setPreferredSize(new Dimension(540, 400));
+//        test2.setVisible(true);
+//        
+//        JPanel test3 = createHorizontalBarPanel();
+//        ChartContainer.add(test3, BorderLayout.PAGE_END);
+//        test3.setPreferredSize(new Dimension(400, 360));
+//        test3.setVisible(true);
+        
+    }
+   
+    public void setView(PieDataset pieDataset, CategoryDataset barDataset, CategoryDataset horizontalBarDataset){
+        
+        this.removeAll();
+        
+        this.pieDataset = pieDataset;
+        this.barDataset = barDataset;
+        this.horizontalBarDataset = horizontalBarDataset;
 
         JPanel ChartContainer = new JPanel();
+        this.updateUI();
         ChartContainer.setLayout (new BorderLayout());
         
         this.add(ChartContainer,BorderLayout.PAGE_START);
@@ -61,8 +99,9 @@ public class ChartView extends javax.swing.JPanel {
         test3.setPreferredSize(new Dimension(400, 360));
         test3.setVisible(true);
         
+        this.repaint();
     }
-   
+    
      private static JFreeChart createPieChart( PieDataset dataset )
    {
       JFreeChart pieChart = ChartFactory.createPieChart(      

@@ -8,7 +8,6 @@ import View.MainView;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,9 +15,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,6 +27,7 @@ public class MainCtrl {
     
     static ArrayList arrestList = new <Arrest> ArrayList();
     static ArrayList LarrestList = new <Arrest> ArrayList();
+    static ArrayList CarrestList = new <Arrest> ArrayList();
     static Accused accused;
     static Location loc;
     static Arrest arrest;
@@ -45,7 +45,7 @@ public class MainCtrl {
         chartCtrl = new ChartCtrl(arrestList);
         mView.add(chartCtrl.getChart(),BorderLayout.CENTER);
         
-        filterCtrl = new FilterCtrl(arrestList);
+        filterCtrl = new FilterCtrl();
         mView.getRightBox().add(filterCtrl.getFilter());
         
         listCtrl = new ListCtrl(arrestList);
@@ -84,12 +84,24 @@ public class MainCtrl {
         
         JButton filterButton = filterCtrl.getFilter().getFilterButton();
         
-        filterButton.addActionListener (new ActionListener () {
-            public void actionPerformed(ActionEvent e) {
-                LarrestList = filterCtrl.filter(comboSex.getSelectedItem().toString(),comboAge.getSelectedItem().toString(),comboRace.getSelectedItem().toString());
-                listCtrl.setList(LarrestList);
-            }
+        filterButton.addActionListener ((ActionEvent e) -> {
+            LarrestList = filterCtrl.filter(comboSex.getSelectedItem().toString(),comboAge.getSelectedItem().toString(),comboRace.getSelectedItem().toString(), arrestList);
+            listCtrl.setList(LarrestList);
         });
+        
+        JComboBox comboDistrict = filterCtrl.getFilter().getDistrictfilter();
+        
+        JButton chartButton = filterCtrl.getFilter().getChartButton();
+        
+        chartButton.addActionListener ((ActionEvent e) -> {
+            CarrestList = filterCtrl.chartFilter(comboDistrict.getSelectedItem().toString(), arrestList);
+//            chartCtrl.setChart(CarrestList);
+//            chartCtrl.getChart().setView(chartCtrl.createPieDataset(CarrestList), chartCtrl.createBarDataset(CarrestList), chartCtrl.createHorizontalBarDataset(CarrestList));
+            chartCtrl.setFilter(CarrestList);
+        });
+        
+        
+        mView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         mView.setVisible(true);
     }
@@ -105,7 +117,6 @@ public class MainCtrl {
             Iterator <JSONObject> iterator = jsonArray.iterator();
             while (iterator.hasNext()) {
                 
-                
                 JSONObject it = (JSONObject) iterator.next();
                 
                 //Accused
@@ -115,7 +126,6 @@ public class MainCtrl {
                 
                 accused = new Accused(age, sex, race);
 
-                
                 //Location
                 JSONObject location = (JSONObject) it.get("location_1");
                 if (location != null){
