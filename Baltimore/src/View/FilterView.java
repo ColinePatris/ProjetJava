@@ -1,10 +1,98 @@
 package View;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+
+/**
+ *
+ * @author Cécile
+ */
 public class FilterView extends javax.swing.JPanel {
 
+    /**
+     * Creates new form FilterView
+     */
+    
+    String[] sexChoices = { "All", "Male", "Female" };
+    String[] ageChoices = { "All", "15-25", "26-35","36-50", "51-65","65+"};
+    String[] raceChoices = { "All", "Asian", "White","Black", "Indian", "Unknown"};
+    
+    JComboBox sexfilter;
+    JComboBox agefilter;
+    JComboBox racefilter;
+    
+    JButton filterButton;
+    
     public FilterView() {
         initComponents();
+     
+        this.setLayout(new BorderLayout());
+        Box box =  Box.createVerticalBox();
+        this.add(box);
+        Box boxSex =  Box.createHorizontalBox();
+        Box boxAge =  Box.createHorizontalBox();
+        Box boxRace =  Box.createHorizontalBox();
         
+        JLabel titlefilter = new JLabel();
+        titlefilter.setText("LIST FILTERS");
+        titlefilter.setFont(new Font("", Font.BOLD, 18));
+        box.add(titlefilter);
+        
+        JLabel sexTitle = new JLabel();
+        sexTitle.setText(" Sex:   ");
+        boxSex.add(sexTitle);
+        sexfilter = new JComboBox(sexChoices);
+        boxSex.add(sexfilter);
+        
+        JLabel ageTitle = new JLabel();
+        ageTitle.setText(" Age:   ");
+        boxAge.add(ageTitle);
+        agefilter = new JComboBox(ageChoices);
+        boxAge.add(agefilter);
+        
+        JLabel raceTitle = new JLabel();
+        raceTitle.setText(" Race: ");
+        boxRace.add(raceTitle);
+        racefilter = new JComboBox(raceChoices);
+        boxRace.add(racefilter);
+        
+        box.add(boxSex);
+        box.add(boxAge);
+        box.add(boxRace);
+        
+        filterButton = new JButton();
+        filterButton.setText("Ok");
+        
+        box.add(filterButton);
+        
+        this.setBackground(Color.white);
+        this.setPreferredSize(new Dimension(300, 150));
+        
+        System.out.print(sexfilter.getSelectedItem());
+        
+    }
+
+    public JButton getFilterButton() {
+        return filterButton;
+    }
+
+    public JComboBox getSexfilter() {
+        return sexfilter;
+    }
+
+    public JComboBox getAgefilter() {
+        return agefilter;
+    }
+
+    public JComboBox getRacefilter() {
+        return racefilter;
     }
 
     /**

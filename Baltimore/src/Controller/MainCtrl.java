@@ -7,13 +7,18 @@ import Model.Location;
 import View.MainView;
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -22,6 +27,7 @@ import org.json.simple.parser.ParseException;
 public class MainCtrl {
     
     static ArrayList arrestList = new <Arrest> ArrayList();
+    static ArrayList LarrestList = new <Arrest> ArrayList();
     static Accused accused;
     static Location loc;
     static Arrest arrest;
@@ -30,6 +36,7 @@ public class MainCtrl {
     static ChartCtrl chartCtrl;
     static DetailsCtrl detailsCtrl;
     static ListCtrl listCtrl;
+    static FilterCtrl filterCtrl;
 
     public static void main(String[] args) {
         parseJSON();        
@@ -38,8 +45,11 @@ public class MainCtrl {
         chartCtrl = new ChartCtrl(arrestList);
         mView.add(chartCtrl.getChart(),BorderLayout.CENTER);
         
+        filterCtrl = new FilterCtrl(arrestList);
+        mView.getRightBox().add(filterCtrl.getFilter());
+        
         listCtrl = new ListCtrl(arrestList);
-        mView.add(listCtrl.getList(),BorderLayout.LINE_END);
+        mView.getRightBox().add(listCtrl.getList());
         
         detailsCtrl = new DetailsCtrl();
         mView.add(detailsCtrl.getDetails(),BorderLayout.PAGE_END);
@@ -66,6 +76,19 @@ public class MainCtrl {
         
         previous.addActionListener((java.awt.event.ActionEvent evt) -> {
             listCtrl.getList().getJason().setSelectedIndex(listCtrl.getList().getJason().getSelectedIndex()-1);
+        });
+        
+        JComboBox comboSex = filterCtrl.getFilter().getSexfilter();
+        JComboBox comboAge = filterCtrl.getFilter().getAgefilter();
+        JComboBox comboRace = filterCtrl.getFilter().getRacefilter();
+        
+        JButton filterButton = filterCtrl.getFilter().getFilterButton();
+        
+        filterButton.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+                LarrestList = filterCtrl.filter(comboSex.getSelectedItem().toString(),comboAge.getSelectedItem().toString(),comboRace.getSelectedItem().toString());
+                listCtrl.setList(LarrestList);
+            }
         });
         
         mView.setVisible(true);

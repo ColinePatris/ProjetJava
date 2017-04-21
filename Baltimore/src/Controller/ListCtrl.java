@@ -32,5 +32,14 @@ public class ListCtrl{
     public ListView getList() {
         return List;
     }
+    
+    public void setList(ArrayList LarrestList){
+        this.elementsList = new ListElement[LarrestList.size()];
+         for(int i=0; i < LarrestList.size(); i++){
+             elementsList[i] = new ListElement((Arrest) LarrestList.get(i));
+        }
+         
+        List.getJason().setListData(elementsList);
+    }
 
 }

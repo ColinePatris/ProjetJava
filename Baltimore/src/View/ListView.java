@@ -16,24 +16,13 @@ public class ListView extends javax.swing.JPanel {
     private Arrest selectedArrest = new Arrest();
         
     public ListView() {
-        this.setBorder(BorderFactory.createLineBorder(Color.black));
-        FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);
-        
-        JPanel filters = new JPanel();
+       
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setViewportView(jason);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        filters.setLayout(layout);
-        JComboBox sexfilter = new JComboBox();
-        JComboBox agefilter = new JComboBox();
-        
-        filters.add(sexfilter);
-        filters.add(agefilter);
-        filters.setBackground(Color.yellow);
-        filters.setPreferredSize(new Dimension(300, 150));
-        scrollPane.setPreferredSize(new Dimension(290, 600));
-        this.add(filters);
+
+        scrollPane.setPreferredSize(new Dimension(290, 625));
+
         this.add(scrollPane);
     }
 

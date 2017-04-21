@@ -1,14 +1,29 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 
 public class MainView extends javax.swing.JFrame {
+    
+    private Box rightBox;
 
     public MainView() {
         setLayout (new BorderLayout());
         this.setTitle("Baltimore Database Manager");
         this.setLocationRelativeTo(null);
-        this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
+        this.setSize(1200,1000);
+        rightBox =  Box.createVerticalBox();
+        rightBox.setBorder(BorderFactory.createLineBorder(Color.black));
+//        FlowLayout layout = new FlowLayout();
+//        rightBox.setLayout(layout);
+        this.add(rightBox, BorderLayout.LINE_END);
+        
+    }
+    
+     public Box getRightBox() {
+        return rightBox;
     }
 
     /**
