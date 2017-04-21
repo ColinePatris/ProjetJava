@@ -77,19 +77,19 @@ public class DetailsView extends javax.swing.JPanel {
         centerBox.add(acc);
         
         sex = new JLabel();
-        sex.setText("Sex : " + accused.getSex());
+        sex.setText("Sex: " + accused.getSex());
         sex.setFont(new Font("", Font.PLAIN, 16));
         sex.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         centerBox.add(sex);
         
         age = new JLabel();
-        age.setText("Age : " + String.valueOf(accused.getAge()));
+        age.setText("Age: " + String.valueOf(accused.getAge()));
         age.setFont(new Font("", Font.PLAIN, 16));
         age.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         centerBox.add(age);
         
         race = new JLabel();
-        race.setText("Race : " + accused.getRace());
+        race.setText("Race: " + accused.getRace());
         race.setFont(new Font("", Font.PLAIN, 16));
         race.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         centerBox.add(race);
@@ -101,19 +101,19 @@ public class DetailsView extends javax.swing.JPanel {
         centerBox.add(arr);
         
         charge = new JLabel();
-        charge.setText("Charge : " + arrest.getCharge());
+        charge.setText("Charge: " + arrest.getCharge());
         charge.setFont(new Font("", Font.PLAIN, 16));
         charge.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         centerBox.add(charge);
         
         arrDate = new JLabel();
-        arrDate.setText("Date : " + arrest.getDate());
+        arrDate.setText("Date: " + arrest.getDate());
         arrDate.setFont(new Font("", Font.PLAIN, 16));
         arrDate.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         centerBox.add(arrDate);
         
         arrTime = new JLabel();
-        arrTime.setText("Time" + arrest.getTime());
+        arrTime.setText("Time: " + arrest.getTime());
         arrTime.setFont(new Font("", Font.PLAIN, 16));
         arrTime.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         centerBox.add(arrTime);
@@ -129,31 +129,31 @@ public class DetailsView extends javax.swing.JPanel {
         rightBox.add(loc);
         
         lat = new JLabel();
-        lat.setText("Latitude : " + String.valueOf(location.getLatitude()));
+        lat.setText("Latitude: " + String.valueOf(location.getLatitude()));
         lat.setFont(new Font("", Font.PLAIN, 16));
         lat.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         rightBox.add(lat);
         
          lng = new JLabel();
-        lng.setText("Longitute : " + String.valueOf(location.getLongitude()));
+        lng.setText("Longitute: " + String.valueOf(location.getLongitude()));
         lng.setFont(new Font("", Font.PLAIN, 16));
         lng.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         rightBox.add(lng);
         
         dist = new JLabel();
-        dist.setText("District : " + location.getDistrict());
+        dist.setText("District: " + location.getDistrict());
         dist.setFont(new Font("", Font.PLAIN, 16));
         dist.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         rightBox.add(dist);
         
         cBlock = new JLabel();
-        cBlock.setText("CityBlock : " + location.getCityBlock());
+        cBlock.setText("Neighborhood: " + location.getCityBlock());
         cBlock.setFont(new Font("", Font.PLAIN, 16));
         cBlock.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         rightBox.add(cBlock);
         
         arrLoc = new JLabel();
-        arrLoc.setText("Address : :" + location.getArrestLocation());
+        arrLoc.setText("Address: " + location.getArrestLocation());
         arrLoc.setFont(new Font("", Font.PLAIN, 16));
         arrLoc.setAlignmentX(JLabel.LEFT_ALIGNMENT);
         rightBox.add(arrLoc);
@@ -163,29 +163,48 @@ public class DetailsView extends javax.swing.JPanel {
         ImageIcon image;
         accused = arrest.getAccused();
         location = arrest.getLocation();
+        
+        if("M".equals(accused.getSex())){    
+            sex.setText("Sex: Male");
+        }else{
+            sex.setText("Sex: Female");
+        }
 
-        sex.setText("Sex : " + accused.getSex());
+        age.setText("Age: " + String.valueOf(accused.getAge()));
 
-        age.setText("Age : " + String.valueOf(accused.getAge()));
+        switch (accused.getRace()) {
+            case "A":
+                race.setText("Race: Asian");
+                break;
+            case "B":
+                race.setText("Race: Black");
+                break;
+            case "I":
+                race.setText("Race: Indian");
+                break;
+            case "U":
+                race.setText("Race: Unknown");
+                break;
+            default:
+                race.setText("Race: White");
+                break;
+        }
 
-        race.setText("Race : " + accused.getRace());
+        charge.setText("Charge: " + arrest.getCharge());
 
-        charge.setText("Charge : " + arrest.getCharge());
+        arrDate.setText("Date: " + arrest.getDate().substring(0, 10));
 
-        arrDate.setText("Date : " + arrest.getDate());
+        arrTime.setText("Time: " + arrest.getTime());
 
-;
-        arrTime.setText("Time" + arrest.getTime());
+        lat.setText("Latitude: " + String.valueOf(location.getLatitude()));
 
-        lat.setText("Latitude : " + String.valueOf(location.getLatitude()));
+        lng.setText("Longitute: " + String.valueOf(location.getLongitude()));
 
-        lng.setText("Longitute : " + String.valueOf(location.getLongitude()));
+        dist.setText("District: " + location.getDistrict());
 
-        dist.setText("District : " + location.getDistrict());
-
-        cBlock.setText("CityBlock : " + location.getCityBlock());
+        cBlock.setText("Neighborhood: " + location.getCityBlock());
    
-        arrLoc.setText("Address : :" + location.getArrestLocation());
+        arrLoc.setText("Address: " + location.getArrestLocation());
         
         if("M".equals(accused.getSex())){
             image = new ImageIcon(this.getClass().getResource("/Resources/Male.jpg"));

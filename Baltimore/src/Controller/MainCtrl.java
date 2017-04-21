@@ -101,13 +101,13 @@ public class MainCtrl {
                     
                     String district = (String) it.get("district");
                     String arrestLocation = (String) it.get("arrestlocation");
-                    String cityBlock = (String) it.get("incident1");
+                    String cityBlock = (String) it.get("name1");
                 
                     loc = new Location(longitude, latitude, district, cityBlock, arrestLocation);
                 }else{
                     String district = (String) it.get("district");
                     String arrestLocation = (String) it.get("arrestlocation");
-                    String cityBlock = (String) it.get("incident1");
+                    String cityBlock = (String) it.get("name1");
 
                     loc = new Location(district, cityBlock, arrestLocation);
                 }

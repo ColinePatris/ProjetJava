@@ -27,23 +27,38 @@ public class Location {
     
     
 
-    public Double getLongitude() {
-        return longitude;
+    public String getLongitude() {
+        if(longitude==null){
+            return "No Data Available";
+        }else
+        return longitude.toString();
     }
 
-    public Double getLatitude() {
-        return latitude;
+    public String getLatitude() {
+        if(latitude==null){
+            return "No Data Available";
+        }else
+        return latitude.toString();
     }
 
     public String getDistrict() {
+        if(district==null){
+            return "No Data Available";
+        }else
         return district;
     }
 
     public String getCityBlock() {
+        if(cityBlock==null){
+            return "No Data Available";
+        }else
         return cityBlock;
     }
 
     public String getArrestLocation() {
+        if(arrestLocation==null){
+            return "No Data Available";
+        }else
         return arrestLocation;
     }
 }

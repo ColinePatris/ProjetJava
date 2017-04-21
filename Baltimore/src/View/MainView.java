@@ -5,12 +5,10 @@ import java.awt.BorderLayout;
 public class MainView extends javax.swing.JFrame {
 
     public MainView() {
-
-        initComponents();
         setLayout (new BorderLayout());
-        this.setSize(1200,1024);
         this.setTitle("Baltimore Database Manager");
         this.setLocationRelativeTo(null);
+        this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
     }
 
     /**

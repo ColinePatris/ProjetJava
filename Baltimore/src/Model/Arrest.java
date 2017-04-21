@@ -28,14 +28,23 @@ public class Arrest {
     }
 
     public String  getDate() {
+        if(date==null){
+            return "No Data Available";
+        }else
         return date;
     }
 
     public String  getTime() {
+        if(time==null){
+            return "No Data Available";
+        }else
         return time;
     }
 
     public String getCharge() {
+        if(charge==null){
+            return "No Data Available";
+        }else
         return charge;
     }
     

@@ -19,10 +19,16 @@ public class Accused {
     }
 
     public String getSex() {
+        if(sex==null){
+            return "No Data Available";
+        }else
         return sex;
     }
 
     public String getRace() {
+        if(race==null){
+            return "No Data Available";
+        }else
         return race;
     }
     
