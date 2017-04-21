@@ -8,6 +8,7 @@ package Model;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -28,13 +29,20 @@ public class ListElement extends JPanel {
     
     JPanel accusedInfo = new JPanel();
     
-    public ListElement(){
+    Accused accused;
+    Arrest arrest;
+    
+    public ListElement(Arrest arrest){
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         this.setPreferredSize(new Dimension(280, 65));
-        sex.setText("Sex: M");
-        age.setText("Age: 24");
-        race.setText("Race: B");
-        charge.setText("Charge: FAILURE TO APPEAR");
+        
+        this.arrest = arrest;
+        this.accused = arrest.getAccused();
+        
+        sex.setText("Sex : " + accused.getSex());
+        age.setText("Age : " + String.valueOf(accused.getAge()));
+        race.setText("Race : " + accused.getRace());
+        charge.setText("Charge : " + arrest.getCharge());
         
         accusedInfo.setLayout(layout);
         accusedInfo.setOpaque(false);
@@ -44,5 +52,10 @@ public class ListElement extends JPanel {
         this.add(accusedInfo);
         this.add(charge);
     }
+
+    public Arrest getArrest() {
+        return arrest;
+    }
+
     
 }

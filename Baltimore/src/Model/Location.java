@@ -13,11 +13,14 @@ import java.util.ArrayList;
  */
 public class Location {
     
-    Double longitude;
-    Double latitude;
-    String district;
-    String cityBlock;
-    String arrestLocation;
+    private Double longitude;
+    private Double latitude;
+    private String district;
+    private String cityBlock;
+    private String arrestLocation;
+
+    public Location() {
+    }
 
     public Location(Double longitude, Double latitude, String district, String cityBlock, String arrestLocation) {
         this.longitude = longitude;
@@ -56,11 +59,7 @@ public class Location {
     }
 
     public String toString(){
-        String stringList = district + "\n";
-        stringList += cityBlock + "\n";
-        stringList += arrestLocation + "\n";
-        stringList += latitude.toString() + "\n";
-        stringList += longitude.toString() + "\n";
+        String stringList = new String();
         return stringList;
     }
     

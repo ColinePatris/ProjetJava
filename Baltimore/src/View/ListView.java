@@ -5,27 +5,35 @@
  */
 package View;
 
+import Model.Arrest;
 import Model.ListElement;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 /**
  *
  * @author Coline
  */
 public class ListView extends javax.swing.JPanel {
-    
-    public javax.swing.JList jason = new <ListElement>javax.swing.JList();
+
+    private JList jason = new JList();
+    private Arrest selectedArrest = new Arrest();
         
     public ListView() {
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
+        
         JPanel filters = new JPanel();
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setViewportView(jason);
@@ -33,6 +41,7 @@ public class ListView extends javax.swing.JPanel {
         filters.setLayout(layout);
         JComboBox sexfilter = new JComboBox();
         JComboBox agefilter = new JComboBox();
+        
         filters.add(sexfilter);
         filters.add(agefilter);
         filters.setBackground(Color.yellow);
@@ -40,7 +49,30 @@ public class ListView extends javax.swing.JPanel {
         scrollPane.setPreferredSize(new Dimension(290, 600));
         this.add(filters);
         this.add(scrollPane);
+
+        
+//        jason.addListSelectionListener(new ListSelectionListener() {
+//
+//            @Override
+//            public void valueChanged(ListSelectionEvent arg0) {
+//                if (!arg0.getValueIsAdjusting()) {
+//                  
+//                  ListElement listEl = (ListElement) jason.getSelectedValue();
+//                  selectedArrest = listEl.getArrest();
+//                }
+//            }
+//        });
+        
     }
+
+    public JList getJason() {
+        return jason;
+    }
+
+    public Arrest getSelectedArrest() {
+        return selectedArrest;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

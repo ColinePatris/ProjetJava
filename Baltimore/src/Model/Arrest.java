@@ -14,11 +14,11 @@ import java.util.Date;
  */
 public class Arrest {
     
-    Accused accused;
-    Location location;
-    String date;
-    String time;
-    String charge;
+    private Accused accused;
+    private Location location;
+    private String date;
+    private String time;
+    private String charge;
 
     public Arrest() {
     }

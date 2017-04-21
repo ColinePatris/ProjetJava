@@ -10,9 +10,9 @@ package Model;
  * @author Cécile
  */
 public class Accused {
-    int age;
-    String sex;
-    String race; 
+    private int age;
+    private String sex;
+    private String race; 
 
     public Accused() {
     }   
@@ -41,7 +41,7 @@ public class Accused {
         stringList = "Accused : \n";
         stringList += "" + age + " years old \n";
         switch (race){
-            //case race = W :
+            //case = W :
         }
         stringList += raceFull + "\n";
         
